@@ -1,0 +1,46 @@
+create table customers (
+  id serial primary key,
+  nama varchar(100) not null,
+  email varchar(255) unique not null
+);
+
+create table products (  
+  id serial primary key,
+  nama varchar(100) not null,
+  jumlah integer default 0,
+  harga numeric default 0
+);
+
+create table orders (
+  id serial primary key,
+  customer_id integer references customers(id),
+  tanggal date,
+  alamat varchar(255),
+  telepon varchar(20)
+);
+
+create table order_details (
+  order_id integer references orders(id),
+  product_id integer references products(id),
+  jumlah_order integer default 0
+);
+
+copy products(id, nama, jumlah, harga)
+from 'D:\GIthub\web-umkm\back-end\products.csv'
+delimiter ','
+csv header;
+
+copy customers(id, customer_id, tanggal)
+from 'D:\GIthub\web-umkm\back-end\customers.csv'
+delimiter ','
+csv header;
+
+copy orders(id, customer_id, tanggal, alamat, telepon)
+from 'D:\GIthub\web-umkm\back-end\orders.csv'
+delimiter ','
+csv header;
+
+copy order_details(order_id, product_id, jumlah_order)
+from 'D:\GIthub\web-umkm\back-end\order_details.csv'
+delimiter ','
+csv header;
