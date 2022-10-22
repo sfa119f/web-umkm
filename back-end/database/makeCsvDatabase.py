@@ -16,40 +16,40 @@ def str_time_prop(start, end, time_format, prop):
 def random_date(start, end, prop):
     return str_time_prop(start, end, '%d/%m/%Y', prop)
 
-# buah = [
-#   "tomat", "wortel", "selada", "cabai merah", "cabai hijau",
-#   "cabai rawit", "bawang merah", "bawang putih", "bayam", "kentang",
-#   "kubis", "brokoli", "kembang kol", "sawi", "singkong"
-# ]
+buah = [
+  "tomat", "wortel", "selada", "cabai merah", "cabai hijau",
+  "cabai rawit", "bawang merah", "bawang putih", "bayam", "kentang",
+  "kubis", "brokoli", "kembang kol", "sawi", "singkong"
+]
 
-# products = []
+products = []
 
-# for i in range(len(buah)):
-#   temp = {
-#     "id": i+1,
-#     "nama": buah[i],
-#     "jumlah": random.randint(50,150),
-#     "harga": random.randint(15,30) * 1000
-#   }
-#   products.append(temp)
+for i in range(len(buah)):
+  temp = {
+    "id": i+1,
+    "nama": buah[i],
+    "jumlah": random.randint(50,150),
+    "harga": random.randint(15,30) * 1000
+  }
+  products.append(temp)
 
-# # print(products)
-# pd.DataFrame(products).to_csv('products.csv', index=False)
+# print(products)
+pd.DataFrame(products).to_csv('products.csv', index=False)
 
-# url = "https://dummyjson.com/users?limit=50"
-# response = urlopen(url)
-# data_json = json.loads(response.read())
-# customers = []
-# for i in range(50):
-#   temp = {
-#     "id": i+1,
-#     "nama": data_json['users'][i]['firstName'] + ' ' + data_json['users'][i]['lastName'],
-#     "email": data_json['users'][i]['firstName'] + data_json['users'][i]['lastName'] + '@gmail.com'
-#   }
-#   customers.append(temp)
+url = "https://dummyjson.com/users?limit=50"
+response = urlopen(url)
+data_json = json.loads(response.read())
+customers = []
+for i in range(50):
+  temp = {
+    "id": i+1,
+    "nama": data_json['users'][i]['firstName'] + ' ' + data_json['users'][i]['lastName'],
+    "email": data_json['users'][i]['firstName'] + data_json['users'][i]['lastName'] + '@gmail.com'
+  }
+  customers.append(temp)
 
-# # print(customers)
-# pd.DataFrame(customers).to_csv('customers.csv', index=False)
+# print(customers)
+pd.DataFrame(customers).to_csv('customers.csv', index=False)
 
 numOrder = random.randint(201, 299)
 orders = []
